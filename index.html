@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head>
+  <title>Shop Direct - Angular.js Demo</title>
+  <!-- Use Bootstrap CSS from MaxCDN (Content Delivery Network) -->
+  <link rel="stylesheet" href="bootstrap.css">
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="products.js"></script>
+  <style>
+    .ng-invalid.ng-dirty {
+      border-color: #FA787A;
+    }
+
+    .ng-valid.ng-dirty {
+      border-color: #78FA89;
+    }
+  </style>
+</head>
+<body ng-controller="StoreController as store">
+  <div class="container">
+    <div class="row">
+      <div class="jumbotron">
+        <h1>Shop Direct - Angular.js Demo</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div ng-repeat="product in store.products">
+          <hr>
+
+          <!--<h1 ng-include="'product-title.html'">-->
+          <h1>
+            <product-title></product-title>
+          </h1>
+          <product-panels></product-panels>
+          <h1 ng-show="product.images.length">Image Gallery</h1>
+          <img ng-repeat="image in product.images" ng-src="{{image}}" height="200" ng-show="product.images.length" />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
